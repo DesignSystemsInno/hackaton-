@@ -22,7 +22,7 @@ def get_db():
 
 @redacted_product.get('/')
 def read_root():
-    return  {'message':'www.panda.com'}
+    return  {'message':'civica punto'}
 
 @redacted_product.post('/')
 def post_redacted_product(post:Redacted_product_schema,  db:Session=Depends(get_db)):

@@ -22,7 +22,7 @@ def get_db():
 
 @foundation.get('/')
 def read_root():
-    return  {'message':'www.panda.com'}
+    return  {'message':'civica punto'}
 
 @foundation.post('/')
 def post_foundation(post:Foundation_schemas, db:Session=Depends(get_db)):

@@ -22,7 +22,7 @@ def get_db():
 
 @student.get('/')
 def read_root():
-    return  {'message':'www.panda.com'}
+    return  {'message':'civica punto'}
 
 
 @student.post('/')
