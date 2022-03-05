@@ -55,7 +55,7 @@ services:
     volumes:
       - ./api_redacted_products:/app
     environment:
-      - DB_URL=
+      - DB_URL=mysql+mysqlconnector://doadmin:ri1kQdqd42T3pLjt@cerex-db-mysql-do-user-9977027-0.b.db.ondigitalocean.com:25060/hackaton
     networks:
     - hackaton
 
