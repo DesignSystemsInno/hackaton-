@@ -11,6 +11,7 @@ import os
 #DATABASE_URL_LOCAL = "mysql+mysqlconnector://root:@localhost:3306/panda"
 DB_URL = os.getenv("DB_URL")
 Engine = create_engine(DB_URL)
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=Engine)
     
 Base = declarative_base()
