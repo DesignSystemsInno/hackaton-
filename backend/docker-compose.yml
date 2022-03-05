@@ -1,0 +1,18 @@
+version: '2.0'
+
+services:
+
+  api_activity:
+      build: ./api_activity
+      container_name: api_activity
+      command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+      volumes:
+        - ./api_activity/:/app
+      ports:
+      - "8000:8000"
+      networks:
+        - hackaton 
+
+networks:
+  hackaton:
+    driver: bridge
