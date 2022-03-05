@@ -6,13 +6,9 @@ import os
 
 app = FastAPI(openapi_url='/api/v1/foundation/openapi.json', docs_url='/api/v1/foundation/docs')
 
-LOCAL_HOST_PORT = os.getenv('LOCAL_HOST_PORT¿)
+LOCAL_HOST_PORT = os.getenv('LOCAL_HOST_PORT')
 IP_HOST_PORT = os.getenv('IP_HOST_PORT') 
-origins = [
- LOCAL_HOST_PORT,
- IP_HOST_PORT
- 
-]
+origins = ["*"]
 app.add_middleware(
  CORSMiddleware,
  allow_origins=origins,

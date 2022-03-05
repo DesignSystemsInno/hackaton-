@@ -8,10 +8,72 @@ services:
       command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
       volumes:
         - ./api_activity/:/app
-      ports:
-      - "8000:8000"
+      environment:
+      - DB_URL=
       networks:
-        - hackaton 
+      - hackaton
+    
+
+  api_foundation:
+      build: ./api_foundation
+      container_name: api_foundation
+      command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+      volumes:
+          - ./api_foundation/:/app
+      environment:
+      - DB_URL=
+      networks:
+      - hackaton
+
+  api_student:
+      build: ./api_student
+      container_name: api_student
+      command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+      volumes:
+          - ./api_student/:/app
+      environment:
+      - DB_URL=
+      networks:
+      - hackaton
+  
+  api_product:
+    build: ./api_product
+    container_name: api_product
+    command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+    volumes: 
+        - ./api_product/:/app
+    environment:
+      - DB_URL=
+    networks:
+    - hackaton
+  
+  api_redacted_product:
+    build: ./api_redacted_products
+    container_name: api_redacted_product
+    command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+    volumes:
+      - ./api_redacted_products:/app
+    environment:
+      - DB_URL=
+    networks:
+    - hackaton
+
+  api_gateway:
+    image: nginx:latest
+    ports: 
+      - "8080:8080"
+    volumes:
+      - ./nginx_config.conf:/etc/nginx/conf.d/default.conf
+    container_name: api_gateway
+    networks:
+      - hackaton
+    depends_on:
+      - api_activity
+      - api_product
+      - api_redacted_product
+      - api_student
+      - api_foundation
+    
 
 networks:
   hackaton:

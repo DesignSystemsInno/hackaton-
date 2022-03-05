@@ -27,7 +27,7 @@ def read_root():
 @activity.post('/')
 def post_activity(post:Activity_schemas,  db:Session=Depends(get_db)):
     activity = Activity_model(
-        id_fundation = post.id_foundation,
+        id_foundation = post.id_foundation,
         name = post.name,
         points = post.points,
         description = post.description,
